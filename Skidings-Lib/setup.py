@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
     name='skidings',
-    version='0.0.2',
+    version='0.0.4',
     description='Simple module for new comers to networking and requests and mysql',
     long_description=open('README.txt').read(),
     url='https://github.com/AeronPY/SkidingsPY-module',

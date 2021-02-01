@@ -115,7 +115,9 @@ def reverse_hostname(hostname):
 #Phone Lookup
 def phone_lookup(phn):
     query = requests.get(f"https://api.apithis.net/numberinfo.php?number={phn}")
+    return True
 
 #Webhook delete
 def webhook_delete(webhook_url):
     query = requests.delete(webhook_url) 
+    return True
