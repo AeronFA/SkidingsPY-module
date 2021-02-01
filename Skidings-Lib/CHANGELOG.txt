@@ -44,3 +44,9 @@ Change Log
 - Added Current Time
 - Updated Examples
 - Updated README.txt
+
+0.0.7(01/02/2021)
+-----------------
+- Discord Webhook Spammer
+- Updated Examples
+- Updated github

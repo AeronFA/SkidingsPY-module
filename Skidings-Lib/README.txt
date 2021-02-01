@@ -20,3 +20,4 @@ Module Functions
 - dns_lookup(ip) // This function looks up any dns server.
 - portscan(ip) // This function is a Tcp Portscanner
 - current_time() // This function gets the current time for you.
+- webhook_spammer(url,message,delay) // This function is for spamming discord webhooks.

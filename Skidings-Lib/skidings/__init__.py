@@ -2,6 +2,8 @@ import subprocess
 import requests
 import mysql.connector
 import datetime
+import time
+from dhooks import Webhook
 
 #Get current hwid
 def get_hwid():
@@ -131,6 +133,15 @@ def phone_lookup(phn):
 def webhook_delete(webhook_url):
     query = requests.delete(webhook_url) 
     return True
+
+#Webhook Spammer
+def webhook_spammer(webhook_url,message,delay):
+    webhookurl = Webhook(webhook_url)
+
+    while True:
+        time.sleep(delay)
+        webhookurl.send("Made By Aeron: " + message)
+        return(Sent.")
 
 #Get Current Time
 def current_time():
