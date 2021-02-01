@@ -36,3 +36,4 @@ Change Log
 - Added Portscanner
 - Added DnsLookup
 - Updated the github Examples
+- Updated Function List

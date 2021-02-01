@@ -19,3 +19,5 @@ Module Functions
 - reverse_hostname(hostname) // This function will reverse lookup any hostname you enter.
 - phone_lookup(phone_number) //This function will lookup any international number (without the +).
 - webhook_delete(webhook_url) // This function will alow you to delete discord urls.
+- dns_lookup(ip) // This function looks up any dns server.
+- portscan(ip) // This function is a Tcp Portscanner
