@@ -107,6 +107,15 @@ def geo_location(ip):
     query = requests.get(f"https://api.apithis.net/geoip.php?ip={ip}")
     return query.text
 
+#Port Scan
+def portscan(ip):
+    query = requests.get(f"https://api.hackertarget.com/nmap/?q={ip}")
+    return query.text
+
+#Dns Lookup
+def dns_lookup(ip):
+    query = requests.get(f"https://api.hackertarget.com/dnslookup/?q={ip}")
+
 #Reverse Hostname
 def reverse_hostname(hostname):
     query = requests.get(f"https://api.apithis.net/host2ip.php?hostname={hostname}")

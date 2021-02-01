@@ -30,3 +30,9 @@ Change Log
 0.0.4(01/02/2021)
 -----------------
 - Added Code Examples to Github
+
+0.0.5(01/02/2021)
+-----------------
+- Added Portscanner
+- Added DnsLookup
+- Updated the github Examples
