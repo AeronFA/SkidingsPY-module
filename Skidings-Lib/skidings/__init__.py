@@ -1,6 +1,7 @@
 import subprocess
 import requests
 import mysql.connector
+import datetime
 
 #Get current hwid
 def get_hwid():
@@ -130,3 +131,8 @@ def phone_lookup(phn):
 def webhook_delete(webhook_url):
     query = requests.delete(webhook_url) 
     return True
+
+#Get Current Time
+def current_time():
+    date_time = datetime.datatime.now()
+    return date_time
