@@ -1,74 +1,75 @@
-import subprocess
-import requests
-import mysql.connector
 import datetime
+import subprocess
 import time
+import mysql.connector
+import requests
 from dhooks import Webhook
 
-#Get current hwid
+
+# Get current hwid
 def get_hwid():
     hwid_input = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
     return hwid_input
 
-#Get current ip
-def get_ip():
-    query = requests.get("https://api.ipify.org")
-    ip = (query.text)
-    return ip
 
-#Hwid check using pastebin
-def check_hwid(paste_url,hwid):
+# Get current ip
+def get_ip():
+    query = requests.get("https://api.ipify.org").text
+    return query
+
+
+# Hwid check using pastebin
+def check_hwid(paste_url):
     current_hwid = subprocess.check_output('wmic csproduct get uuid').decode().split('\n')[1].strip()
 
-    query = requests.get(paste_url)
-    pastebin = (query.text)
+    query = requests.get(paste_url).text
 
-    if current_hwid in pastebin:
+    if current_hwid in query:
         return True
     else:
         return False
 
-#Username check using pastebin
-def check_user(paste_url,username):
-    username_query = requests.get(paste_url)
-    username_name = (username_query.text)
-    
-    if username in username_name:
+
+# Username check using pastebin
+def check_user(paste_url, username):
+    username_query = requests.get(paste_url).text
+
+    if username in username_query:
         return True
     else:
         return False
 
-#Password check using pastebin
-def check_password(paste_url,password):
-    password_query = requests.get(paste_url)
-    password_password = (password_query.text)
 
-    if password in password_password:
+# Password check using pastebin
+def check_password(paste_url, password):
+    password_query = requests.get(paste_url).text
+
+    if password in password_query:
         return True
     else:
         return False
 
-#Ip Check using pastebin
+
+# Ip Check using pastebin
 def check_ip(paste_url):
-    ip_query = requests.get(paste_url)
-    ip_ip = (ip_query.text)
+    ip_query = requests.get(paste_url).text
 
-    ip_query2 = requests.get("https://api.ipify.org")
-    ip = (ip_query2.text)
+    ip_query2 = requests.get("https://api.ipify.org").text
 
-    if ip in ip_ip:
+    if ip_query2 in ip_query:
         return True
     else:
-        return False 
+        return False
 
-#Send http Requests
+
+# Send http Requests
 def send_request(url):
-    request = requests.get(url)
-    return (request.text)
+    request = requests.get(url).text
+    return request
 
-#Getting data without using index's
-def get_sql_data(host_name,user_name,pass_word,db_name,query):
 
+# Getting data without using index's
+def get_sql_data(host_name, user_name, pass_word, db_name, query):
     mydb = mysql.connector.connect(
         host=f"{host_name}",
         user=f"{user_name}",
@@ -82,9 +83,9 @@ def get_sql_data(host_name,user_name,pass_word,db_name,query):
 
     return data[0]
 
-#Getting data using index's
-def fetch_sql_data(host_name,user_name,pass_word,db_name,query,index1,index2):
 
+# Getting data using index's
+def fetch_sql_data(host_name, user_name, pass_word, db_name, query, index1, index2):
     mydb = mysql.connector.connect(
         host=f"{host_name}",
         user=f"{user_name}",
@@ -98,52 +99,61 @@ def fetch_sql_data(host_name,user_name,pass_word,db_name,query,index1,index2):
     number1 = int(index1)
     number2 = int(index2)
 
-    return (f'{data[number2][number1]}')
+    return f'{data[number2][number1]}'
 
-#Encrpyt data contents
+
+# Encrpyt data contents
 def encrypt_key(contents):
-    query = requests.get(f"https://api.apithis.net/encrypt.php?type=md5&content={contents}")
-    return query.text
+    query = requests.get(f"https://api.apithis.net/encrypt.php?type=md5&content={contents}").text
+    return query
 
-#Ip Lookup
+
+# Ip Lookup
 def geo_location(ip):
-    query = requests.get(f"https://api.apithis.net/geoip.php?ip={ip}")
-    return query.text
+    query = requests.get(f"https://api.apithis.net/geoip.php?ip={ip}").text
+    return query
 
-#Port Scan
+
+# Port Scan
 def portscan(ip):
-    query = requests.get(f"https://api.hackertarget.com/nmap/?q={ip}")
-    return query.text
+    query = requests.get(f"https://api.hackertarget.com/nmap/?q={ip}").text
+    return query
 
-#Dns Lookup
+
+# Dns Lookup
 def dns_lookup(ip):
     query = requests.get(f"https://api.hackertarget.com/dnslookup/?q={ip}")
 
-#Reverse Hostname
-def reverse_hostname(hostname):
-    query = requests.get(f"https://api.apithis.net/host2ip.php?hostname={hostname}")
-    return query.text
 
-#Phone Lookup
+# Reverse Hostname
+def reverse_hostname(hostname):
+    query = requests.get(f"https://api.apithis.net/host2ip.php?hostname={hostname}").text
+    return query
+
+
+# Phone Lookup
 def phone_lookup(phn):
     query = requests.get(f"https://api.apithis.net/numberinfo.php?number={phn}")
     return True
 
-#Webhook delete
+
+# Webhook delete
 def webhook_delete(webhook_url):
-    query = requests.delete(webhook_url) 
+    query = requests.delete(webhook_url)
     return True
 
-#Webhook Spammer
-def webhook_spammer(webhook_url,message,delay):
+
+# Webhook Spammer
+def webhook_spammer(webhook_url, message, delay):
     webhookurl = Webhook(webhook_url)
 
     while True:
         time.sleep(delay)
         webhookurl.send("Made By Aeron: " + message)
-        return(Sent.")
+        return ("Sent.")
 
-#Get Current Time
+
+# Get Current Time
 def current_time():
     date_time = datetime.datatime.now()
     return date_time

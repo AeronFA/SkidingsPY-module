@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
     name='skidings',
-    version='0.0.7',
+    version='0.0.9',
     description='Simple module for new comers to networking and requests and mysql',
     long_description=open('README.txt').read(),
     url='https://github.com/AeronPY/SkidingsPY-module',
@@ -20,5 +20,5 @@ setup(
     classifiers=classifiers,
     keywords='skidings',
     packages=find_packages(),
-    install_requires=['mysql-connector']
+    install_requires=['mysql-connector', 'datetime', 'dhooks']
 )
